@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Lists from "./Lists.jsx";
+import  '../../index.css'
 
 import { FaAngleDown } from "react-icons/fa6";
 import { FaAngleUp } from "react-icons/fa6";

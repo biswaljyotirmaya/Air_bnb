@@ -12,16 +12,16 @@ const SliderItem = () => {
     infinite: false,
     speed: 900,
     slidesToShow: 10,
-    slidesToScroll: 3,
+    slidesToScroll: 2,
   };
 
   return (
-    <div className="items-center">
+    <div className="items-center mx-2">
       <Slider {...settings}>
         {iconsData.map((item) => (
           <div
           key={item.key}
-          className="bg-white h-[80px] text-black p-5 cursor-pointer hover:underline"
+          className=" h-[80px] text-black p-5 cursor-pointer hover:underline"
         >
          {item.icon}
           <p className="  text-xs mt-1">{item.title}</p>

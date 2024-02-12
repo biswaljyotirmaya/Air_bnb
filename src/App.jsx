@@ -7,12 +7,14 @@ import BlogDetails from "./pages/BlogDetails";
 import PlacesRoute from "./pages/PlacesRoute";
 import SigninLogin from "./Shared/SigninLogin";
 import HelpCenter from "./Shared/HelpCenter";
+import Details from "./components/Deatails/Details";
 
 const App = () => {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" exact element={<Home />} />
+        <Route path="/details" exact element={<Details/>} />
         <Route path="/about" exact element={<About />} />
         <Route path="/blogs" exact element={<Blog />} />
         <Route path="/blogs/:id" exact element={<BlogDetails />} />

@@ -1,74 +1,14 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
+import Lists from "./Lists.jsx";
 
 import { FaAngleDown } from "react-icons/fa6";
 import { FaAngleUp } from "react-icons/fa6";
 
-const linkList = [
-  { title: "poiuyqwerty", subTitle: "asldkfjgh" },
-  { title: "poiuyqwerty", subTitle: "asldkfjgh" },
-  { title: "poiuyqwerty", subTitle: "asldkfjgh" },
-  { title: "poiuyqwerty", subTitle: "asldkfjgh" },
-  { title: "poiuyqwerty", subTitle: "asldkfjgh" },
-  { title: "poiuyqwerty", subTitle: "asldkfjgh" },
-  { title: "poiuyqwerty", subTitle: "asldkfjgh" },
-  { title: "poiuyqwerty", subTitle: "asldkfjgh" },
-  { title: "poiuyqwerty", subTitle: "asldkfjgh" },
-  { title: "poiuyqwerty", subTitle: "asldkfjgh" },
-  { title: "poiuyqwerty", subTitle: "asldkfjgh" },
-  { title: "poiuyqwerty", subTitle: "asldkfjgh" },
-  { title: "poiuyqwerty", subTitle: "asldkfjgh" },
-  { title: "poiuyqwerty", subTitle: "asldkfjgh" },
-  { title: "poiuyqwerty", subTitle: "asldkfjgh" },
-  { title: "poiuyqwerty", subTitle: "asldkfjgh" },
-  { title: "poiuyqwerty", subTitle: "asldkfjgh" },
-  { title: "poiuyqwerty", subTitle: "asldkfjgh" },
-  { title: "poiuyqwerty", subTitle: "asldkfjgh" },
-  { title: "poiuyqwerty", subTitle: "asldkfjgh" },
-  { title: "poiuyqwerty", subTitle: "asldkfjgh" },
-  { title: "poiuyqwerty", subTitle: "asldkfjgh" },
-  { title: "poiuyqwerty", subTitle: "asldkfjgh" },
-  { title: "poiuyqwerty", subTitle: "asldkfjgh" },
-  { title: "poiuyqwerty", subTitle: "asldkfjgh" },
-  { title: "poiuyqwerty", subTitle: "asldkfjgh" },
-  { title: "poiuyqwerty", subTitle: "asldkfjgh" },
-  { title: "poiuyqwerty", subTitle: "asldkfjgh" },
-  { title: "poiuyqwerty", subTitle: "asldkfjgh" },
-  { title: "poiuyqwerty", subTitle: "asldkfjgh" },
-  { title: "poiuyqwerty", subTitle: "asldkfjgh" },
-  { title: "poiuyqwerty", subTitle: "asldkfjgh" },
-  { title: "poiuyqwerty", subTitle: "asldkfjgh" },
-  { title: "poiuyqwerty", subTitle: "asldkfjgh" },
-  { title: "poiuyqwerty", subTitle: "asldkfjgh" },
-  { title: "poiuyqwerty", subTitle: "asldkfjgh" },
-  { title: "poiuyqwerty", subTitle: "asldkfjgh" },
-  { title: "poiuyqwerty", subTitle: "asldkfjgh" },
-  { title: "poiuyqwerty", subTitle: "asldkfjgh" },
-  { title: "poiuyqwerty", subTitle: "asldkfjgh" },
-  { title: "poiuyqwerty", subTitle: "asldkfjgh" },
-  { title: "poiuyqwerty", subTitle: "asldkfjgh" },
-  { title: "poiuyqwerty", subTitle: "asldkfjgh" },
-  { title: "poiuyqwerty", subTitle: "asldkfjgh" },
-  { title: "poiuyqwerty", subTitle: "asldkfjgh" },
-  { title: "poiuyqwerty", subTitle: "asldkfjgh" },
-  { title: "poiuyqwerty", subTitle: "asldkfjgh" },
-  { title: "poiuyqwerty", subTitle: "asldkfjgh" },
-];
-
-const links = [
-  "Popular",
-  "Art & Future",
-  "Outdoors",
-  "Mountains",
-  "Beach",
-  "Unique stays",
-  "Categories",
-  "Things to do",
-];
-
 const Inspiration = () => {
   const [list, setList] = useState(false);
   const [selectedLink, setSelectedLink] = useState(null);
+  const [arrNo, setArrNo] = useState(1);
+  const [selectedList, setSelectedList] = useState(Lists[1]);
 
   useEffect(() => {
     if (!list) {
@@ -78,18 +18,22 @@ const Inspiration = () => {
 
   const handleLinkClick = (index) => {
     setSelectedLink(index);
+    setArrNo(index + 1);
+    setSelectedList(Lists[index + 1]);
   };
 
   return (
     <div>
-      <p className="text-2xl font-semibold">Inspiration for future getaways</p>
+      <p className="text-2xl font-semibold">
+        Inspiration for future getaways
+      </p>
       <div>
         <div className="flex mt-3 items-center font-semibold cursor-pointer">
-          {links.map((item, index) => (
+          {Lists[0].map((item, index) => (
             <div
               key={item}
               className={`mr-6 p-2 text-lg border-b-[3px] ${
-                selectedLink === index? "border-black " : "border-transparent"
+                selectedLink === index ? "border-black " : "border-transparent"
               }`}
               onClick={() => handleLinkClick(index)}
             >
@@ -100,18 +44,20 @@ const Inspiration = () => {
         <hr />
         <div className="py-10 grid grid-cols-5 gap-4">
           {list
-            ? linkList.map((item, index) => (
-                <div key={item.title} className="cursor-pointer">
+            ? selectedList.map((item, index) => (
+                <div key={item.id} className="cursor-pointer">
                   <p className="font-semibold text-lg">{item.title}</p>
                   <p>{item.subTitle}</p>
                 </div>
               ))
-            : linkList.slice(0, 19).map((item) => (
-                <div key={item.title} className="cursor-pointer">
-                  <p className="font-semibold text-lg">{item.title}</p>
-                  <p>{item.subTitle}</p>
-                </div>
-              ))}
+            : selectedList
+                .slice(0, 19)
+                .map((item) => (
+                  <div key={item.id} className="cursor-pointer">
+                    <p className="font-semibold text-lg">{item.title}</p>
+                    <p>{(item.subTitle)?(item.subTitle):(item.title)}</p>
+                  </div>
+                ))}
           {list ? (
             <div
               className="cursor-pointer py-2 flex items-center"
@@ -124,7 +70,7 @@ const Inspiration = () => {
               </p>
               <FaAngleUp />
             </div>
-          ) : (
+          ) : ((selectedList.length > 25) && (
             <div
               className="cursor-pointer flex items-center"
               onClick={() => {
@@ -136,7 +82,7 @@ const Inspiration = () => {
               </p>
               <FaAngleDown />
             </div>
-          )}
+          ))}
         </div>
         <hr />
       </div>

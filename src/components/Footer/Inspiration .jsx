@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Lists from "./Lists.jsx";
-import  '../../index.css'
+import '../../index.css'
 
 import { FaAngleDown } from "react-icons/fa6";
 import { FaAngleUp } from "react-icons/fa6";
@@ -46,15 +46,15 @@ const Inspiration = () => {
         <div className="py-10 grid grid-cols-5 gap-4">
           {list
             ? selectedList.map((item, index) => (
-                <div key={item.id} className="cursor-pointer">
+                <div key={`${item.id}-${index}`} className="cursor-pointer">
                   <p className="font-semibold text-lg">{item.title}</p>
                   <p>{item.subTitle}</p>
                 </div>
               ))
             : selectedList
                 .slice(0, 19)
-                .map((item) => (
-                  <div key={item.id} className="cursor-pointer">
+                .map((item, index) => (
+                  <div key={`${item.id}-${index}`} className="cursor-pointer">
                     <p className="font-semibold text-lg">{item.title}</p>
                     <p>{(item.subTitle)?(item.subTitle):(item.title)}</p>
                   </div>

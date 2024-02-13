@@ -8,6 +8,7 @@ import PlacesRoute from "./pages/PlacesRoute";
 import SigninLogin from "./Shared/SigninLogin";
 import HelpCenter from "./Shared/HelpCenter";
 import Details from "./components/Deatails/Details";
+import Galary from "./components/Deatails/Galary";
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
         <Route path="/places" exact element={<PlacesRoute />} />
         <Route path="/signinLogin" exact element={<SigninLogin />} />
         <Route path="/helpCenter" exact element={<HelpCenter />} />
+        <Route path="/galary" exact element={<Galary/>} />
         <Route path="*" element={<Navigate to="/404" />} />
       </Routes>
     </BrowserRouter>

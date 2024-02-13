@@ -45,15 +45,15 @@ const Navbar = () => {
       <div className=" w-[40%] px-20">
         <div className=" rounded-full border flex font-medium text-lg justify-between items-center shadow-sm hover:shadow-md pl-8 pr-2 p-1">
           <div>
-            <p>Anywhere</p>
+            <p className="cursor-pointer">Anywhere</p>
           </div>
           <div>
-            <p>Any Week</p>
+            <p className="cursor-pointer">Any Week</p>
           </div>
           <div className="font-normal">
-            <p>Add guest</p>
+            <p className="cursor-pointer">Add guest</p>
           </div>
-          <div className="text-white bg-rose-500 h-10 w-10 rounded-full flex items-center justify-center">
+          <div className="text-white bg-rose-500 h-10 w-10 rounded-full flex items-center justify-center cursor-pointer">
             <FaSearch />
           </div>
         </div>

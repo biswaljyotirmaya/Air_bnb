@@ -137,14 +137,15 @@ const Details = () => {
             shoots, corporate events, destination weddings and <br />
             <br />
             <p
-              className="underline font-bold flex items-center cursor-pointer"
+              className="text-lg underline font-bold flex items-center cursor-pointer"
               onClick={() => setShow(!show)}
             >
               Show more
               <FaChevronRight />
             </p>
           </p>
-          {show && <Description />}
+          {show && <Description show={{ setShow }} />}
+
           <hr className="my-8" />
         </div>
         <PriceCard />

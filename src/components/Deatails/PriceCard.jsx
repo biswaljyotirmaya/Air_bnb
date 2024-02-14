@@ -5,7 +5,7 @@ import Tags from "./Tags";
 
 const PriceCard = () => {
   return (
-    <div className="w-2/6  sticky top-24">
+    <div className="w-2/6  sticky -top-2/4">
     <div className=" border p-6 rounded-2xl shadow-xl h-[36rem]">
       <p className="flex text-3xl font-semibold">
         <span className="flex items-center line-through text-gray-700 ml-2">

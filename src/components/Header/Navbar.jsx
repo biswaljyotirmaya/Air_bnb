@@ -12,6 +12,8 @@ const Navbar = () => {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
   const [sign, setSign] = useState(false);
+  const [search, setSearch] = useState(false);
+  const [searchText, setSearchText] = useState("");
 
   const toggleDropdown = () => {
     setDropdownOpen(!isDropdownOpen);
@@ -29,6 +31,18 @@ const Navbar = () => {
     };
   }, [isDropdownOpen]);
 
+  const handleSearch = () => {
+    setSearch(false);
+    setSearchText(""); // Clear the search input
+    // Perform search or any other action here
+  };
+
+  const handleEnterKey = (event) => {
+    if (event.key === "Enter") {
+      handleSearch();
+    }
+  };
+
   // Function to handle sign up click
   const handleSignUpClick = () => {
     setSign(true);
@@ -44,16 +58,37 @@ const Navbar = () => {
       </div>
       <div className=" w-[40%] px-20">
         <div className=" rounded-full border flex font-medium text-lg justify-between items-center shadow-sm hover:shadow-md pl-8 pr-2 p-1">
-          <div>
-            <p className="cursor-pointer">Anywhere</p>
-          </div>
-          <div>
-            <p className="cursor-pointer">Any Week</p>
-          </div>
-          <div className="font-normal">
-            <p className="cursor-pointer">Add guest</p>
-          </div>
-          <div className="text-white bg-rose-500 h-10 w-10 rounded-full flex items-center justify-center cursor-pointer">
+          {search ? (
+            <div className="w-full">
+              <input
+                type="text"
+                className="w-full outline-none"
+                placeholder="Search Places or city"
+                value={searchText}
+                onChange={(e) => setSearchText(e.target.value)}
+                onKeyDown={handleEnterKey}
+              />
+            </div>
+          ) : (
+            <div className="flex">
+              <div>
+                <p className="cursor-pointer">Anywhere</p>
+              </div>
+              <div className="mx-4">
+                <p className="cursor-pointer">Anyweek</p>
+              </div>
+              <div className="font-normal">
+                <p className="cursor-pointer">Addguest</p>
+              </div>
+            </div>
+          )}
+
+          <div
+            className="text-white bg-rose-500 hover:bg-rose-700 h-10 w-10 rounded-full flex items-center justify-center cursor-pointer"
+            onClick={() => {
+              !search ? setSearch(true) : handleSearch();
+            }}
+          >
             <FaSearch />
           </div>
         </div>
@@ -79,22 +114,24 @@ const Navbar = () => {
               <ul>
                 <li
                   className="py-2 px-4 hover:bg-zinc-50 cursor-pointer font-semibold"
-                  onClick={handleSignUpClick} 
+                  onClick={handleSignUpClick}
                 >
                   Sign up
                 </li>
-                <li className="py-2 px-4 hover:bg-zinc-50 cursor-pointer "
-                onClick={handleSignUpClick} >
+                <li
+                  className="py-2 px-4 hover:bg-zinc-50 cursor-pointer "
+                  onClick={handleSignUpClick}
+                >
                   Login
                 </li>
                 <hr className="my-1" />
                 <li className="py-2 px-4 hover:bg-zinc-50  cursor-pointer">
                   Airbnb your home
                 </li>
-                <Link to={'/helpCenter'}>
-                <li className="py-2 px-4 hover:bg-zinc-50 cursor-pointer">
-                  Help Center
-                </li>
+                <Link to={"/helpCenter"}>
+                  <li className="py-2 px-4 hover:bg-zinc-50 cursor-pointer">
+                    Help Center
+                  </li>
                 </Link>
               </ul>
             </div>

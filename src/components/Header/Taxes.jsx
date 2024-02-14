@@ -9,7 +9,7 @@ const Taxes = () => {
 
   return (
     <>
-      <label className="autoSaverSwitch relative inline-flex cursor-pointer select-none items-center border justify-between px-3 rounded-lg w-[242px]">
+      <label className="autoSaverSwitch relative inline-flex cursor-pointer select-none items-center border justify-between px-2 rounded-lg w-[246px]">
         <input
           type="checkbox"
           name="autoSaver"

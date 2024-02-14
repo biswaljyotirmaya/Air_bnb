@@ -1,20 +1,16 @@
 import React, { useState } from "react";
 import Card from "./Card";
 
-const Feed = () => {
-  const [isChecked, setIsChecked] = useState(false);
+const Feed = (props) => {
   const [showMore, setShowMore] = useState(false);
   const cardArray = Array.from({ length: 60 }, (_, index) => index);
 
-  const handleCheckboxChange = () => {
-    setIsChecked(!isChecked);
-  };
 
   return (
     <>
       <div className="px-10 my-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {cardArray.slice(0, showMore ? cardArray.length : 24).map((index) => (
-          <Card key={index} isChecked={isChecked} />
+          <Card key={index} isChecked={props.isChecked} />
         ))}
       </div>
       <div className="text-center my-16">

@@ -1,20 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
-const Taxes = () => {
-  const [isChecked, setIsChecked] = useState(false);
+const Taxes = (props) => {
+  const [isToggle, setIsToggle] = useState(false);
+
+  useEffect(() => {
+    props.setIsChecked(isToggle);
+  }, [isToggle, props]);
 
   const handleCheckboxChange = () => {
-    setIsChecked(!isChecked);
+    setIsToggle(!isToggle);
   };
 
   return (
     <>
-      <label className="autoSaverSwitch relative inline-flex cursor-pointer select-none items-center border justify-between px-2 rounded-lg w-[246px]">
+      <label className="autoSaverSwitch relative inline-flex cursor-pointer select-none items-center border justify-between px-3 rounded-lg w-[242px]">
         <input
           type="checkbox"
           name="autoSaver"
           className="sr-only"
-          checked={isChecked}
+          checked={isToggle}
           onChange={handleCheckboxChange}
         />
 
@@ -22,18 +26,18 @@ const Taxes = () => {
           Display total{" "}
           <span className="pl-1">
             {" "}
-            {isChecked ? "with taxes" : "without taxes"}{" "}
+            {isToggle ? "with taxes" : "without taxes"}{" "}
           </span>
         </span>
 
         <span
           className={`slider ml-3 flex h-[26px] w-[50px] sticky items-center rounded-full p-1 duration-200 ${
-            isChecked ? "bg-[#08081b]" : "bg-[#CCCCCE]"
+            isToggle ? "bg-[#08081b]" : "bg-[#CCCCCE]"
           }`}
         >
           <span
             className={`dot h-[18px] w-[18px] rounded-full bg-white duration-200 ${
-              isChecked ? "translate-x-6" : ""
+              isToggle ? "translate-x-6" : ""
             }`}
           ></span>
         </span>

@@ -1,29 +1,27 @@
-// Card.js
 import React, { useEffect, useState } from "react";
 import { FaHeart } from "react-icons/fa";
 import { IoStar } from "react-icons/io5";
 import { MdOutlineCurrencyRupee } from "react-icons/md";
 import { Link } from "react-router-dom";
-
 import Imageslider from "./Imageslider";
 
 const Card = ({ isChecked }) => {
-  const initialTaxAmount = 323897;
-  const [taxAmount, setTaxAmount] = useState(initialTaxAmount);
+  const amount=324557;
+  const [taxAmount, setTaxAmount] = useState(amount);
   const [watchList, setWatchList] = useState(false);
 
   useEffect(() => {
     if (isChecked) {
-      setTaxAmount((initialTaxAmount * 18) / 100);
+      setTaxAmount(amount+((amount*18)/100)
+      );
     } else {
-      setTaxAmount(initialTaxAmount);
+      setTaxAmount(amount)
     }
   }, [isChecked]);
-
   return (
     <div className="relative rounded-xl cursor-pointer hover:shadow-lg hover:shadow-slate-300 p-4">
       <div className="h-[315.50px] w-[300px] relative">
-        <Imageslider/>
+        <Imageslider />
         <FaHeart
           className={`absolute top-0 right-0 m-4 h-6 w-6 ${
             watchList ? "text-rose-800" : "text-white"
@@ -46,9 +44,10 @@ const Card = ({ isChecked }) => {
           <p className="flex items-center">
             <span className="flex items-center font-semibold mr-2">
               <MdOutlineCurrencyRupee />
-              {taxAmount.toLocaleString()}
+              {taxAmount}
             </span>
-            night
+           { !isChecked ?
+            "night":"night with GST"}
           </p>
         </div>
       </Link>

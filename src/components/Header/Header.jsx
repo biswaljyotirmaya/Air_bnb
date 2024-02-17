@@ -30,7 +30,7 @@ const Header = (props) => {
         <MenuBar setIsChecked={props.setIsChecked} />
       </div>
     ) : (
-      <WideNavbar setSearch={setSearch}/>
+      <WideNavbar setSearch={setSearch} search={search}/>
     )
   );
 };

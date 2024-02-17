@@ -9,7 +9,7 @@ import { FaSearch } from "react-icons/fa";
 import SigninLogin from "../../Shared/SigninLogin";
 import { useState, useRef, useEffect } from "react";
 
-const WideNavbar = (props) => {
+const WideNavbar = ({ search, setSearch }) => {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
   const [sign, setSign] = useState(false);
@@ -46,17 +46,16 @@ const WideNavbar = (props) => {
   };
   return (
     <>
-      <div className="w-full border h-[200px] shadow sticky top-0 bg-white z-20">
-        <div className="h-1/2  flex">
-          <div className=" w-1/3 flex items-center pl-20">
-            {" "}
-            <Link to="/" >
-              <img src={logo} alt="" className="w-36"  />
+      <div className="w-full h-[200px] shadow-lg shadow-black sticky top-0 bg-white z-20">
+        <div className="h-2/3  flex">
+          <div className=" w-1/3 flex items-center pl-20 cursor-pointer" onClick={()=>{setSearch(true)}}>
+            <Link to="/">
+              <img src={logo} alt="" className="h-[3rem]" />
             </Link>
           </div>
           <div className="w-1/3 flex items-center justify-around">
             <div
-              className={`hover:bg-gray-100 px-6 py-4 flex justify-center text-xl rounded-full cursor-pointer ${
+              className={`hover:bg-gray-100 px-6 py-4 flex justify-center text-lg rounded-full cursor-pointer ${
                 selectedItem === 0
                   ? "font-semibold text-black text-lg"
                   : "font-semibold text-gray-400"
@@ -66,7 +65,7 @@ const WideNavbar = (props) => {
               Stays
             </div>
             <div
-              className={`hover:bg-gray-100 px-6 py-4 flex items-center justify-center text-xl rounded-full cursor-pointer ${
+              className={`hover:bg-gray-100 px-6 py-4 flex items-center justify-center text-lg rounded-full cursor-pointer ${
                 selectedItem === 1
                   ? "font-semibold text-black"
                   : "font-semibold text-gray-400"
@@ -76,7 +75,7 @@ const WideNavbar = (props) => {
               Experiences
             </div>
             <div
-              className={`hover:bg-gray-100 px-6 py-4 flex items-center justify-center text-xl rounded-full cursor-pointer ${
+              className={`hover:bg-gray-100 px-6 py-4 flex items-center justify-center text-lg rounded-full cursor-pointer ${
                 selectedItem === 2
                   ? "font-semibold text-black"
                   : "font-semibold text-gray-400"
@@ -137,35 +136,38 @@ const WideNavbar = (props) => {
         </div>
 
         <div className="h-1/2 flex items-center justify-center bg-white">
-          <div className="bg-gray-200 h-[75%] w-[60%] rounded-full flex justify-evenly">
+          <div className="bg-gray-200 h-[80%] w-[60%] rounded-full flex justify-evenly">
             <div
               className={`h-full cursor-pointer hover:bg-gray-300 rounded-full justify-center px-8 flex flex-col w-4/12 border  ${
                 isClicked ? "bg-white shadow-lg border" : "border-transparent"
               }`}
               onClick={handleClickbg}
             >
-              <p className="font-semibold">Where</p>
-              <p
-                className={"font-normal text-lg leading-3 text-gray-400"
-                }
-              >
+              <p className="font-semibold text-lg">Where</p>
+              <p className={"font-normal text-md  leading-3 text-gray-400"}>
                 Search destination
               </p>
             </div>
 
             <div className="h-full cursor-pointer hover:bg-gray-300 rounded-full justify-center px-4 flex flex-col  w-2/12">
-              <p className="font-semibold">Check in</p>
-              <p className=" font-normal text-lg leading-3 text-gray-400">Add dates</p>
+              <p className="font-semibold text-lg">Check in</p>
+              <p className=" font-normal text-md leading-3 text-gray-400">
+                Add dates
+              </p>
             </div>
             <div className="h-full cursor-pointer hover:bg-gray-300 rounded-full justify-center px-4 flex flex-col  w-2/12">
-              <p className="font-semibold">Check out</p>
-              <p className=" font-normal text-lg leading-3 text-gray-400">Add dates</p>
+              <p className="font-semibold text-lg">Check out</p>
+              <p className=" font-normal text-md  leading-3 text-gray-400">
+                Add dates
+              </p>
             </div>
             <div className=" h-full cursor-pointer hover:bg-gray-300 rounded-full flex items-center justify-between px-4 w-4/12">
               {" "}
               <div className="h-full cursor-pointer hover:bg-gray-300 rounded-full justify-center px-4 flex flex-col">
-                <p className="font-semibold">Check out</p>
-                <p className=" font-normal text-lg leading-3 text-gray-400">Add dates</p>
+                <p className="font-semibold text-lg">Who</p>
+                <p className=" font-normal text-md  leading-3 text-gray-400">
+                  Add dates
+                </p>
               </div>
               <div className=" bg-rose-600 text-white font-semibold px-6 py-4 rounded-full text-xl flex items-center justify-center">
                 <FaSearch className="mr-2" />

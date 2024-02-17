@@ -58,7 +58,7 @@ const WideNavbar = (props) => {
             <div
               className={`hover:bg-gray-100 px-6 py-4 flex justify-center text-xl rounded-full cursor-pointer ${
                 selectedItem === 0
-                  ? "font-semibold text-black"
+                  ? "font-semibold text-black text-lg"
                   : "font-semibold text-gray-400"
               }`}
               onClick={() => handleItemClick(0)}

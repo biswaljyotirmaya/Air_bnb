@@ -45,9 +45,9 @@ const WideNavbar = ({ search, setSearch }) => {
     setSelectedItem(index);
   };
   return (
-    <>
-      <div className="w-full h-[200px] shadow-lg shadow-black sticky top-0 bg-white z-20">
-        <div className="h-2/3  flex">
+    <div className="bg-white shadow-md sticky top-0  z-20">
+      <div className="w-full h-[230px] ">
+        <div className="h-3/5  flex">
           <div className=" w-1/3 flex items-center pl-20 cursor-pointer" onClick={()=>{setSearch(true)}}>
             <Link to="/">
               <img src={logo} alt="" className="h-[3rem]" />
@@ -135,7 +135,7 @@ const WideNavbar = ({ search, setSearch }) => {
           </div>
         </div>
 
-        <div className="h-1/2 flex items-center justify-center bg-white">
+        <div className="h-2/5 flex items-center justify-center ">
           <div className="bg-gray-200 h-[80%] w-[60%] rounded-full flex justify-evenly">
             <div
               className={`h-full cursor-pointer hover:bg-gray-300 rounded-full justify-center px-8 flex flex-col w-4/12 border  ${
@@ -169,7 +169,7 @@ const WideNavbar = ({ search, setSearch }) => {
                   Add dates
                 </p>
               </div>
-              <div className=" bg-rose-600 text-white font-semibold px-6 py-4 rounded-full text-xl flex items-center justify-center">
+              <div className=" bg-rose-600 text-white font-semibold px-4 py-4 rounded-full text-xl flex items-center justify-center">
                 <FaSearch className="mr-2" />
                 Search
               </div>
@@ -177,7 +177,7 @@ const WideNavbar = ({ search, setSearch }) => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

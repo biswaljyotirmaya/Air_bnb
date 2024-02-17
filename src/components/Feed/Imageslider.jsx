@@ -66,7 +66,7 @@ function Imageslider() {
           <img
             src={slides[currentIndex].url}
             alt=""
-            className="w-[300px] h-[310px] rounded-2xl bg-center bg-cover duration-500 relative"
+            className="w-full h-[310px] rounded-2xl bg-center bg-cover duration-500 relative"
           />
         </Link>
 
